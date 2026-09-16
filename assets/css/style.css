@@ -37,7 +37,7 @@ body {
     gap: 6px;
 }
 
-.logo-wrap h1 {
+.logo-wrap .logo-title {
     color: #fff;
     font-size: 24px;
     font-weight: 600;
@@ -460,7 +460,7 @@ body.menu-open .menu-overlay {
     object-fit: contain;
 }
 
-.skill-sec .skill-title h4 {
+.skill-sec .skill-title h3 {
     grid-column: 2;
     font-size: 20px;
     font-weight: 700;
@@ -1282,7 +1282,7 @@ body.menu-open .menu-overlay {
             0 0 14px rgba(77, 163, 255, 0.22);
     }
 
-    .logo-wrap h1 {
+    .logo-wrap .logo-title {
         font-size: 18px;
     }
 

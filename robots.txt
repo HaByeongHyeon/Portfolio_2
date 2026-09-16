@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://habyeonghyeon.github.io/Portfolio_2/sitemap.xml
