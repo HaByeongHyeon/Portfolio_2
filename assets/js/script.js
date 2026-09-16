@@ -337,6 +337,100 @@ $(function () {
         });
     }
 
+    gsap.utils.toArray(".project-sec .subtitle, .project-sec .title, .project-sec .desc").forEach(function (element) {
+        gsap.fromTo(
+            element,
+            {
+                opacity: 0,
+                y: 80
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 60%"
+                }
+            }
+        );
+    });
+
+    gsap.utils.toArray(".project-item").forEach(function (item) {
+        var parts = item.querySelectorAll(".project-number, .project-name, .project-category, .project-copy, .project-meta, .project-cta, .project-visual");
+
+        gsap.fromTo(parts, {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: item,
+                start: "top 60%"
+            }
+        });
+    });
+
+    gsap.utils.toArray(".merit-sec .sub-title, .merit-sec .title, .merit-sec .desc").forEach(function (element) {
+        gsap.fromTo(
+            element,
+            {
+                opacity: 0,
+                y: 80
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 75%"
+                }
+            }
+        );
+    });
+
+    gsap.fromTo(".merit-list > li", {
+        opacity: 0,
+        y: 50
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".merit-list",
+            start: "top 80%"
+        }
+    });
+
+    gsap.fromTo(
+        gsap.utils.toArray(".contact-label, .contact-title, .contact-description, .contact-cta, .contact-email, .contact-phone, .contact-github"),
+        {
+            opacity: 0,
+            y: 50
+        },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".contact-sec",
+                start: "top 60%",
+                toggleActions: "play reverse play reverse"
+            }
+        }
+    );
+
     window.addEventListener("load", function () {
         ScrollTrigger.refresh();
     });
