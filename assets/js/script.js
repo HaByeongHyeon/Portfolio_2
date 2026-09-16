@@ -5,6 +5,109 @@ $(function () {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    var lenis = null;
+
+    if (typeof Lenis !== "undefined") {
+        lenis = new Lenis({
+            duration: 1.2,
+            smoothWheel: true
+        });
+
+        lenis.on("scroll", ScrollTrigger.update);
+
+        gsap.ticker.add(function (time) {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+    }
+
+    $(".kv-nav a").on("click", function (event) {
+        var href = this.getAttribute("href");
+        var target;
+
+        if (!href || href.charAt(0) !== "#") {
+            return;
+        }
+
+        event.preventDefault();
+        target = document.querySelector(href);
+
+        if (!target) {
+            return;
+        }
+
+        if (lenis) {
+            lenis.scrollTo(target, {
+                offset: 0,
+                duration: 1.4
+            });
+            return;
+        }
+
+        target.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    var headerEl = document.querySelector(".kv-header");
+    var lastScrollY = 0;
+    var headerHidden = false;
+
+    function updateHeaderByScroll(currentY) {
+        if (!headerEl) {
+            return;
+        }
+
+        if (currentY <= 40) {
+            if (headerHidden) {
+                gsap.to(headerEl, {
+                    yPercent: 0,
+                    duration: 0.35,
+                    ease: "power2.out",
+                    overwrite: true
+                });
+                headerHidden = false;
+            }
+            lastScrollY = currentY;
+            return;
+        }
+
+        if (currentY > lastScrollY + 8) {
+            if (!headerHidden) {
+                gsap.to(headerEl, {
+                    yPercent: -100,
+                    duration: 0.35,
+                    ease: "power2.out",
+                    overwrite: true
+                });
+                headerHidden = true;
+            }
+        } else if (currentY < lastScrollY - 8) {
+            if (headerHidden) {
+                gsap.to(headerEl, {
+                    yPercent: 0,
+                    duration: 0.35,
+                    ease: "power2.out",
+                    overwrite: true
+                });
+                headerHidden = false;
+            }
+        }
+
+        lastScrollY = currentY;
+    }
+
+    if (lenis) {
+        lenis.on("scroll", function (event) {
+            updateHeaderByScroll(event.scroll);
+        });
+    } else {
+        $(window).on("scroll", function () {
+            updateHeaderByScroll($(window).scrollTop());
+        });
+    }
+
     gsap.fromTo(".kv-light-line", {
         y: "-100%"
     }, {
