@@ -91,6 +91,90 @@ body {
     box-shadow: 0 0 8px rgba(77, 163, 255, 0.45);
 }
 
+.menu-toggle {
+    display: none;
+    position: relative;
+    z-index: 320;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 48px;
+    height: 48px;
+    margin-right: -8px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background-color: #FFFFFF;
+    transform-origin: center;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.kv-header.menu-open {
+    z-index: 320;
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 280;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body.menu-open .menu-overlay {
+    pointer-events: auto;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 300;
+    width: min(80vw, 400px);
+    height: 100%;
+    height: 100dvh;
+    padding: 120px 48px 48px;
+    background-color: #030816;
+    transform: translateX(100%);
+    will-change: transform;
+}
+
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu a {
+    color: #FFFFFF;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.18);
+}
+
 .kv-light-line {
     position: fixed;
     top: 0;
@@ -1151,4 +1235,539 @@ body {
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.08em;
+}
+
+/* =================================
+   Responsive — Tablet 1024~768 / Mobile 767~402
+   PC 1025px+ is unchanged.
+   ================================= */
+
+@media (min-width: 1025px) {
+    .menu-toggle,
+    .menu-overlay,
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kv-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .kv-header {
+        height: 80px;
+        padding: 0 40px;
+        z-index: 320;
+    }
+
+    .kv-sec {
+        padding-top: 80px;
+        height: 100svh;
+    }
+
+    .kv-main {
+        height: calc(100% - 80px - 18vh);
+    }
+
+    .kv-light-line {
+        z-index: 50;
+        opacity: 0.45;
+        box-shadow:
+            0 0 10px rgba(77, 163, 255, 0.45),
+            0 0 14px rgba(77, 163, 255, 0.22);
+    }
+
+    .logo-wrap h1 {
+        font-size: 18px;
+    }
+
+    .logo-wrap span {
+        font-size: 12px;
+    }
+
+    .symbol-grid {
+        width: 100%;
+        max-width: 720px;
+        height: 280px;
+    }
+
+    .hanja {
+        font-size: 180px;
+        letter-spacing: 16px;
+        margin-top: 48px;
+    }
+
+    .developer {
+        font-size: 16px;
+        letter-spacing: 4px;
+    }
+
+    .eng-name {
+        font-size: 56px;
+        letter-spacing: 4px;
+    }
+
+    .main-copy {
+        font-size: 28px;
+    }
+
+    .copy-desc {
+        width: 100%;
+        max-width: 520px;
+        font-size: 16px;
+        padding: 0 16px;
+    }
+
+    .kv-title-wrap {
+        margin-top: 80px;
+    }
+
+    .subtitle,
+    .contact-label,
+    .merit-sec .sub-title {
+        font-size: 16px;
+        letter-spacing: 4px;
+    }
+
+    .title,
+    .contact-title,
+    .merit-sec .title {
+        font-size: 32px;
+    }
+
+    .desc,
+    .contact-description,
+    .merit-sec .desc,
+    .about-sec .point-text {
+        font-size: 18px;
+    }
+
+    .about-sec,
+    .education-sec,
+    .skill-sec,
+    .project-sec,
+    .contact-sec,
+    .footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .merit-sec .sub-title,
+    .merit-sec .title,
+    .merit-sec .desc {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .education-sec {
+        padding-top: 120px;
+        padding-bottom: 120px;
+        gap: 32px;
+    }
+
+    .education-sec img {
+        width: 42%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+
+    .education-sec .content-wrap {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .skill-sec,
+    .project-sec {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+
+    .contact-sec {
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .about-sec,
+    .about-wrap,
+    .about-sec .subtitle,
+    .about-sec .title,
+    .about-sec .desc,
+    .about-sec .point-text {
+        text-align: center;
+    }
+
+    .about-sec {
+        height: auto;
+        min-height: 100svh;
+        align-items: flex-start;
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .about-wrap {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .about-sec .name-box {
+        justify-content: center;
+    }
+
+    .skill-wrap {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+    }
+
+    .merit-sec {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .merit-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        flex: none;
+    }
+
+    .merit-list > li {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 320px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .merit-list > li:not(:last-child) {
+        border-right: 0;
+    }
+
+    .merit-list > li:nth-child(odd) {
+        border-right: 1px solid rgba(77, 163, 255, 0.18);
+    }
+
+    .merit-list > li:nth-child(-n + 2) {
+        border-bottom: 1px solid rgba(77, 163, 255, 0.18);
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        word-break: keep-all;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .kv-header {
+        height: 72px;
+        padding: 0 24px;
+    }
+
+    .kv-sec {
+        padding-top: 72px;
+    }
+
+    .kv-title-wrap {
+        margin-top: 48px;
+    }
+
+    .hanja {
+        font-size: 96px;
+        letter-spacing: 8px;
+        margin-top: 24px;
+    }
+
+    .eng-name {
+        font-size: 32px;
+        letter-spacing: 0.04em;
+    }
+
+    .developer {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    .main-copy {
+        font-size: 22px;
+    }
+
+    .copy-desc {
+        font-size: 14px;
+    }
+
+    .about-sec,
+    .education-sec,
+    .skill-sec,
+    .project-sec,
+    .contact-sec,
+    .footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .merit-sec .sub-title,
+    .merit-sec .title,
+    .merit-sec .desc {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+
+    .title,
+    .contact-title,
+    .merit-sec .title {
+        font-size: 26px;
+    }
+
+    .desc,
+    .contact-description,
+    .merit-sec .desc,
+    .about-sec .point-text {
+        font-size: 16px;
+    }
+
+    .about-sec {
+        height: auto;
+        min-height: 0;
+        padding-top: 96px;
+        padding-bottom: 64px;
+    }
+
+    .about-wrap {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .about-sec .name-box {
+        gap: 12px 20px;
+    }
+
+    .education-sec {
+        flex-direction: column;
+        gap: 40px;
+        padding-top: 48px;
+        padding-bottom: 72px;
+    }
+
+    .education-sec img {
+        width: 100%;
+        height: auto;
+        max-height: 520px;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        will-change: auto;
+    }
+
+    .content-wrap,
+    .education-sec .content-wrap,
+    .education-sec .subtitle,
+    .education-sec .title,
+    .education-sec .edu-list,
+    .education-sec .cert-list {
+        text-align: center;
+    }
+
+    .education-sec .content-wrap {
+        flex: none;
+        width: 100%;
+    }
+
+    .education-sec .edu-list li,
+    .education-sec .cert-list li {
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 10px 0;
+    }
+
+    .skill-sec,
+    .project-sec {
+        padding-top: 88px;
+        padding-bottom: 88px;
+    }
+
+    .skill-wrap {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        gap: 16px;
+    }
+
+    .skill-wrap > .skill-group {
+        padding: 24px 20px;
+    }
+
+    .project-sec,
+    .project-intro,
+    .project-content,
+    .project-number,
+    .project-name,
+    .project-category,
+    .project-copy,
+    .project-meta,
+    .project-meta-label,
+    .project-meta-value {
+        text-align: center;
+    }
+
+    .project-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+        padding: 48px 0;
+    }
+
+    .project-content {
+        flex: none;
+        width: 100%;
+    }
+
+    .project-cta {
+        justify-content: center;
+        min-height: 44px;
+    }
+
+    .project-visual {
+        width: 100%;
+    }
+
+    .merit-sec {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .merit-list {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        flex: none;
+        margin-top: 40px;
+    }
+
+    .merit-list > li {
+        width: 100%;
+        min-height: 280px;
+        height: 280px;
+        border-right: 0;
+    }
+
+    .merit-list > li:not(:last-child) {
+        border-right: 0;
+        border-bottom: 0;
+    }
+
+    .merit-list > li::before {
+        transform: scaleX(1);
+        background: rgba(0, 0, 0, 0.55);
+        transition: none;
+    }
+
+    .merit-num,
+    .merit-title-text,
+    .merit-title-desc,
+    .merit-content-text {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        clip-path: none;
+        transition: none;
+    }
+
+    .merit-list > li:hover::before,
+    .merit-list > li:hover .merit-num,
+    .merit-list > li:hover .merit-title-text,
+    .merit-list > li:hover .merit-title-desc,
+    .merit-list > li:hover .merit-content-text {
+        transform: none;
+    }
+
+    .contact-inner {
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex: none;
+        width: 100%;
+    }
+
+    .contact-cta {
+        min-height: 44px;
+    }
+
+    .contact-item-value {
+        font-size: 16px;
+        word-break: break-all;
+    }
+
+    .footer-con {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .mobile-menu {
+        width: min(100%, 400px);
+        padding: 100px 24px 48px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .kv-nav ul li a:hover {
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .kv-nav ul li a:hover::after {
+        transform: scaleX(0);
+        box-shadow: none;
+    }
+
+    .project-cta:hover,
+    .contact-cta:hover {
+        color: #FFFFFF;
+        border-color: rgba(77, 163, 255, 0.45);
+    }
+
+    .project-cta:hover .arrow,
+    .contact-cta:hover .arrow,
+    .project-item:hover .project-visual img {
+        transform: none;
+    }
+
+    .contact-item:hover .contact-icon img {
+        opacity: 0.72;
+    }
+
+    .contact-item:hover .contact-item-value {
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .merit-list > li::before {
+        transform: scaleX(1);
+        background: rgba(0, 0, 0, 0.55);
+        transition: none;
+    }
+
+    .merit-num,
+    .merit-title-text,
+    .merit-title-desc,
+    .merit-content-text {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        clip-path: none;
+        transition: none;
+    }
 }

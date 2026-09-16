@@ -23,7 +23,7 @@
             <span>Portfolio</span>
         </div>
 
-        <nav class="kv-nav">
+        <nav class="kv-nav" aria-label="주 메뉴">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -33,7 +33,26 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+
+        <button type="button" class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <div class="menu-overlay"></div>
+
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true" aria-label="모바일 메뉴">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skill">SKILLS</a></li>
+            <li><a href="#project">PROJECT</a></li>
+            <li><a href="#design">DESIGN</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
 
     <main>
 
