@@ -335,7 +335,7 @@
     var startBgImage = window.getComputedStyle(bodyEl).backgroundImage;
 
     ScrollTrigger.create({
-        trigger: ".education-sec",
+        trigger: ".skill-sec",
         start: "top bottom",
         end: "top 75%",
         scrub: true,
@@ -380,22 +380,11 @@
         }
     });
 
-    gsap.to(".about-sec .desc", {
-        color: "#333333",
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".education-sec",
-            start: "top bottom",
-            end: "top 75%",
-            scrub: true
-        }
-    });
-
     gsap.to(".education-sec .subtitle", {
         color: "#2B6CB0",
         ease: "none",
         scrollTrigger: {
-            trigger: ".education-sec",
+            trigger: ".skill-sec",
             start: "top bottom",
             end: "top 75%",
             scrub: true
@@ -406,7 +395,7 @@
         color: "#0D1B2A",
         ease: "none",
         scrollTrigger: {
-            trigger: ".education-sec",
+            trigger: ".skill-sec",
             start: "top bottom",
             end: "top 75%",
             scrub: true
@@ -417,7 +406,7 @@
         color: "#3D4F63",
         ease: "none",
         scrollTrigger: {
-            trigger: ".education-sec",
+            trigger: ".skill-sec",
             start: "top bottom",
             end: "top 75%",
             scrub: true
