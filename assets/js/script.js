@@ -585,7 +585,7 @@
             var startTop = textTop + (textBottom - textTop - imgRect.height) / 2;
 
             profileStart.x = startLeft - imgRect.left - 600;
-            profileStart.y = startTop - imgRect.top - 30;
+            profileStart.y = startTop - imgRect.top - 50;
         }
 
         if (isDesktop && profileImg) {
