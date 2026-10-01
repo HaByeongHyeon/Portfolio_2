@@ -368,7 +368,7 @@ body.menu-open .menu-overlay {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 40px;
     padding: 300px 240px;
     font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
@@ -380,7 +380,7 @@ body.menu-open .menu-overlay {
 }
 
 .education-sec img {
-    width: 50%;
+    width: 30%;
     height: 100%;
     flex-shrink: 0;
     object-fit: cover;
