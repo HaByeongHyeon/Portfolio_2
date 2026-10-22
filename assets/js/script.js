@@ -563,10 +563,45 @@
                 return;
             }
 
-            gsap.set(profileImg, { x: 0, y: 0, scale: 1 });
+            gsap.set(profileImg, {
+                x: 0,
+                y: 0,
+                scale: 1
+            });
 
+            var aboutSec = aboutWrap.closest(".about-sec");
+
+            if (!aboutSec) {
+                return;
+            }
+
+            var gap = 48;
+            var sectionStyle = window.getComputedStyle(aboutSec);
+            var paddingRight = parseFloat(sectionStyle.paddingRight) || 0;
+
+            var sectionRect = aboutSec.getBoundingClientRect();
             var imgRect = profileImg.getBoundingClientRect();
-            var textRight = 0;
+            var aboutRect = aboutWrap.getBoundingClientRect();
+
+            // 화면 오른쪽의 안전 영역 계산
+            var safeRight = Math.min(
+                window.innerWidth - paddingRight,
+                sectionRect.right - paddingRight
+            );
+
+            // 이미지 너비와 간격을 제외해 about-wrap의 최대 너비 계산
+            var availableWidth = Math.max(
+                0,
+                safeRight - imgRect.width - gap - aboutRect.left
+            );
+
+            // 화면 너비에 맞춰 about-wrap 너비 적용
+            aboutWrap.style.width = availableWidth + "px";
+
+            // 너비 적용 후 실제 좌표 재측정
+            aboutRect = aboutWrap.getBoundingClientRect();
+            imgRect = profileImg.getBoundingClientRect();
+
             var textTop = Infinity;
             var textBottom = -Infinity;
             var nodes = aboutWrap.children;
@@ -575,16 +610,22 @@
 
             for (i = 0; i < nodes.length; i++) {
                 rect = nodes[i].getBoundingClientRect();
-                textRight = Math.max(textRight, rect.right);
+
                 textTop = Math.min(textTop, rect.top);
                 textBottom = Math.max(textBottom, rect.bottom);
             }
 
-            var gap = 48;
-            var startLeft = textRight + gap;
-            var startTop = textTop + (textBottom - textTop - imgRect.height) / 2;
+            if (!nodes.length) {
+                textTop = aboutRect.top;
+                textBottom = aboutRect.bottom;
+            }
 
-            profileStart.x = startLeft - imgRect.left - 600;
+            // 이미지가 about-wrap 오른쪽에서 48px 떨어지도록 배치
+            var startLeft = aboutRect.right + gap;
+            var startTop =
+                textTop + (textBottom - textTop - imgRect.height) / 2;
+
+            profileStart.x = startLeft - imgRect.left;
             profileStart.y = startTop - imgRect.top - 50;
         }
 
@@ -658,6 +699,10 @@
 
             if (profileImg) {
                 gsap.set(profileImg, { x: 0, y: 0, scale: 1 });
+            }
+
+            if (aboutWrap) {
+                aboutWrap.style.removeProperty("width");
             }
         };
     });

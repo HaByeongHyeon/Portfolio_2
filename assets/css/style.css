@@ -1343,10 +1343,17 @@ body.menu-open .menu-overlay {
    ================================= */
 
 @media (min-width: 1025px) {
+
     .menu-toggle,
     .menu-overlay,
     .mobile-menu {
         display: none !important;
+    }
+
+    .about-wrap {
+        margin-left: clamp(0px,
+                calc(16.741071vw - 171.428571px),
+                150px);
     }
 }
 
@@ -1494,6 +1501,7 @@ body.menu-open .menu-overlay {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+
     .about-sec,
     .about-wrap,
     .about-sec .subtitle,
@@ -1539,7 +1547,7 @@ body.menu-open .menu-overlay {
         flex: none;
     }
 
-    .merit-list > li {
+    .merit-list>li {
         width: 100%;
         min-width: 0;
         height: auto;
@@ -1547,15 +1555,15 @@ body.menu-open .menu-overlay {
         aspect-ratio: 4 / 3;
     }
 
-    .merit-list > li:not(:last-child) {
+    .merit-list>li:not(:last-child) {
         border-right: 0;
     }
 
-    .merit-list > li:nth-child(odd) {
+    .merit-list>li:nth-child(odd) {
         border-right: 1px solid rgba(77, 163, 255, 0.18);
     }
 
-    .merit-list > li:nth-child(-n + 2) {
+    .merit-list>li:nth-child(-n + 2) {
         border-bottom: 1px solid rgba(77, 163, 255, 0.18);
     }
 }
@@ -1702,7 +1710,7 @@ body.menu-open .menu-overlay {
         gap: 16px;
     }
 
-    .skill-wrap > .skill-group {
+    .skill-wrap>.skill-group {
         padding: 24px 20px;
     }
 
@@ -1754,19 +1762,19 @@ body.menu-open .menu-overlay {
         margin-top: 40px;
     }
 
-    .merit-list > li {
+    .merit-list>li {
         width: 100%;
         min-height: 280px;
         height: 280px;
         border-right: 0;
     }
 
-    .merit-list > li:not(:last-child) {
+    .merit-list>li:not(:last-child) {
         border-right: 0;
         border-bottom: 0;
     }
 
-    .merit-list > li::before {
+    .merit-list>li::before {
         transform: scaleX(1);
         background: rgba(0, 0, 0, 0.55);
         transition: none;
@@ -1783,11 +1791,11 @@ body.menu-open .menu-overlay {
         transition: none;
     }
 
-    .merit-list > li:hover::before,
-    .merit-list > li:hover .merit-num,
-    .merit-list > li:hover .merit-title-text,
-    .merit-list > li:hover .merit-title-desc,
-    .merit-list > li:hover .merit-content-text {
+    .merit-list>li:hover::before,
+    .merit-list>li:hover .merit-num,
+    .merit-list>li:hover .merit-title-text,
+    .merit-list>li:hover .merit-title-desc,
+    .merit-list>li:hover .merit-content-text {
         transform: none;
     }
 
@@ -1854,7 +1862,7 @@ body.menu-open .menu-overlay {
         color: rgba(255, 255, 255, 0.78);
     }
 
-    .merit-list > li::before {
+    .merit-list>li::before {
         transform: scaleX(1);
         background: rgba(0, 0, 0, 0.55);
         transition: none;
