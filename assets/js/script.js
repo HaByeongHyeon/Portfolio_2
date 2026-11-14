@@ -553,7 +553,6 @@
                 scrollTrigger: {
                     trigger: ".contact-sec",
                     start: "top 60%",
-                    toggleActions: "play reverse play reverse"
                 }
             }
         );
